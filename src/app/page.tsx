@@ -15,9 +15,13 @@ import {
   FiChevronRight,
   FiPhone,
   FiMessageCircle,
-  FiInstagram,
-  FiYoutube,
 } from "react-icons/fi";
+// Prefer static path from public for reliability
+const heroImagePath = "/hero.jpg";
+import club1 from "../club1.jpg";
+import club2 from "../club2.jpg";
+import club3 from "../club3.jpg";
+import club4 from "../club4.jpg";
 
 type Weather = {
   temperature: number | null;
@@ -134,7 +138,7 @@ export default function Home() {
         members: 42,
         pace: `5'30"`,
         desc: "퇴근 후 노을과 함께 달리는 도심 러닝 크루",
-        img: "/window.svg",
+        img: club1,
       },
       {
         name: "모닝 스프린트",
@@ -143,7 +147,7 @@ export default function Home() {
         members: 28,
         pace: `6'00"`,
         desc: "아침 햇살과 함께 상쾌하게 시작하는 주말 러닝",
-        img: "/globe.svg",
+        img: club2,
       },
       {
         name: "마라톤 준비반",
@@ -152,7 +156,7 @@ export default function Home() {
         members: 36,
         pace: `5'00"`,
         desc: "하프/풀 완주를 목표로 체계적 훈련",
-        img: "/next.svg",
+        img: club3,
       },
       {
         name: "소셜 조깅",
@@ -161,7 +165,7 @@ export default function Home() {
         members: 31,
         pace: `6'30"`,
         desc: "수다 떨며 가볍게 달리는 친목 중심",
-        img: "/vercel.svg",
+        img: club4,
       },
     ],
     []
@@ -222,13 +226,13 @@ export default function Home() {
               <a href="#features" className="hover:text-accent transition-colors">크루소개</a>
               <a href="#schedule" className="hover:text-accent transition-colors">일정</a>
               <a href="#reviews" className="hover:text-accent transition-colors">후기</a>
-              <a href="#cta" className="hover:text-accent transition-colors">가입하기</a>
+              <a href="/signup" className="hover:text-accent transition-colors">가입하기</a>
             </nav>
             <div className="flex items-center gap-2">
               <button aria-label="Toggle theme" onClick={toggleTheme} className="inline-flex h-9 w-9 items-center justify-center rounded-full glass">
                 {theme === "dark" ? <FiSun /> : <FiMoon />}
               </button>
-              <a href="#cta" className="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-5 py-2 text-white font-semibold shadow-md hover:opacity-95 transition-opacity">
+              <a href="/signup" className="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-5 py-2 text-white font-semibold shadow-md btn-gradient">
                 지금 가입하기
               </a>
               <button className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full glass" onClick={() => setMobileOpen(true)} aria-label="Open menu">
@@ -252,9 +256,9 @@ export default function Home() {
                 <a onClick={() => setMobileOpen(false)} href="#features" className="hover:text-accent">크루소개</a>
                 <a onClick={() => setMobileOpen(false)} href="#schedule" className="hover:text-accent">일정</a>
                 <a onClick={() => setMobileOpen(false)} href="#reviews" className="hover:text-accent">후기</a>
-                <a onClick={() => setMobileOpen(false)} href="#cta" className="hover:text-accent">가입하기</a>
+                <a onClick={() => setMobileOpen(false)} href="/signup" className="hover:text-accent">가입하기</a>
               </nav>
-              <a href="#cta" className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-2 text-white font-semibold">무료로 시작하기</a>
+              <a href="/signup" className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-2 text-white font-semibold btn-gradient">무료로 시작하기</a>
             </div>
           </div>
         )}
@@ -281,7 +285,7 @@ export default function Home() {
               새로운 러닝 메이트를 만나고, 목표를 세우고, 성취의 기쁨을 함께 느껴봐요.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#cta" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/20">
+              <a href="/signup" className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/20 btn-gradient">
                 무료로 시작하기
               </a>
               <a href="#crews" className="inline-flex items-center justify-center rounded-full border border-foreground/20 px-8 py-3 font-semibold hover:bg-foreground/5">
@@ -324,22 +328,23 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="relative h-[340px] rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1 shadow-2xl"
             >
-              <div className="relative h-full w-full overflow-hidden rounded-[22px]">
+              <a href="/signup" aria-label="지금 시작하기로 이동" className="group relative h-full w-full overflow-hidden rounded-[22px] block cursor-pointer focus:outline-none focus:ring-4 focus:ring-white/40">
                 {/* Background photo */}
-                <div
-                  className="absolute inset-0 bg-center bg-cover"
-                  style={{
-                    backgroundImage:
-                      "url('https://source.unsplash.com/1600x900/?running,group,city')",
-                  }}
+                <Image
+                  src={heroImagePath}
+                  alt="러닝크루 히어로 배경"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-black/55" />
+                <div className="absolute inset-0 bg-black/55 transition-colors duration-500 group-hover:bg-black/35" />
                 {/* Centered text */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="heading text-2xl font-semibold text-white">달리기, 지금 시작!</div>
                 </div>
-              </div>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -390,7 +395,7 @@ export default function Home() {
               className="rounded-2xl overflow-hidden border border-foreground/10 hover:shadow-xl transition-shadow"
             >
               <div className="relative h-40 w-full bg-foreground/5">
-                <Image src={c.img} alt={c.name} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-contain p-6" />
+                <Image src={c.img} alt={c.name} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover" />
               </div>
               <div className="p-4">
                 <div className="flex items-center justify-between">
@@ -520,14 +525,10 @@ export default function Home() {
           <div className="rounded-[22px] bg-background/90 p-8 text-center sm:p-12">
             <h2 className="heading text-3xl font-bold text-foreground sm:text-4xl">오늘부터 새로운 러닝 라이프를 시작하세요</h2>
             <p className="mt-2 text-foreground/80">가입비 무료 · 언제든 탈퇴 가능</p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="#" className="inline-flex animate-[pulse_2s_ease-in-out_infinite] items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-8 py-3 text-base font-semibold text-white shadow-lg">
+            <div className="mt-6 flex items-center justify-center">
+              <a href="/signup" className="inline-flex animate-[pulse_2s_ease-in-out_infinite] items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-8 py-3 text-base font-semibold text-white shadow-lg btn-gradient">
                 무료 가입하기
               </a>
-              <div className="flex items-center gap-3 text-white/90">
-                <a aria-label="Instagram" href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"><FiInstagram /></a>
-                <a aria-label="YouTube" href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"><FiYoutube /></a>
-              </div>
             </div>
           </div>
         </div>

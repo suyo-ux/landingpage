@@ -78,3 +78,19 @@ body {
   filter: blur(60px);
   opacity: 0.6;
 }
+
+/* Gradient button hover dark overlay */
+.btn-gradient {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background-color 200ms ease;
+}
+.btn-gradient:hover::after {
+  background: rgba(0, 0, 0, 0.12);
+}
