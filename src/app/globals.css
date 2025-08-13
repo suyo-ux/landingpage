@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: 255 255 255; /* rgb */
+  --foreground: 15 23 42; /* slate-900 */
+  --muted: 100 116 139; /* slate-500 */
+  --accent: 59 130 246; /* blue-500 */
+  --accent-2: 168 85 247; /* purple-500 */
+  --glass: 255 255 255 / 0.06;
+}
+
+.dark {
+  --background: 2 6 23; /* slate-950 */
+  --foreground: 226 232 240; /* slate-200 */
+  --muted: 148 163 184; /* slate-400 */
+  --accent: 99 102 241; /* indigo-500 */
+  --accent-2: 236 72 153; /* pink-500 */
+  --glass: 15 23 42 / 0.5;
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-muted: rgb(var(--muted));
+  --color-accent: rgb(var(--accent));
+  --color-accent-2: rgb(var(--accent-2));
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+
+.heading {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dark .glass {
+  background: linear-gradient(
+    to bottom right,
+    rgba(15, 23, 42, 0.6),
+    rgba(30, 41, 59, 0.4)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.neon {
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.5), 0 0 24px rgba(168, 85, 247, 0.35);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff7e5f 0%, #feb47b 20%, #7f7fd5 60%, #86a8e7 80%, #91eae4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.blob {
+  filter: blur(60px);
+  opacity: 0.6;
+}

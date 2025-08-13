@@ -1,0 +1,31 @@
+# 러닝크루 랜딩페이지 프로젝트 구조 가이드
+
+## 프로젝트 개요
+이 프로젝트는 러닝크루(Running Crew) 랜딩페이지를 위한 Next.js 15 + TypeScript + Tailwind CSS 기반 웹 애플리케이션입니다.
+
+## 주요 파일 구조
+- **메인 진입점**: [src/app/page.tsx](mdc:src/app/page.tsx) - 홈페이지 컴포넌트
+- **레이아웃**: [src/app/layout.tsx](mdc:src/app/layout.tsx) - 루트 레이아웃 및 메타데이터
+- **스타일**: [src/app/globals.css](mdc:src/app/globals.css) - 전역 CSS 스타일
+- **설정 파일들**:
+  - [package.json](mdc:package.json) - 프로젝트 의존성 및 스크립트
+  - [next.config.ts](mdc:next.config.ts) - Next.js 설정
+  - [tsconfig.json](mdc:tsconfig.json) - TypeScript 설정
+  - [tailwind.config.js](mdc:tailwind.config.js) - Tailwind CSS 설정 (필요시 생성)
+
+## 기술 스택
+- **프레임워크**: Next.js 15 (App Router)
+- **언어**: TypeScript
+- **스타일링**: Tailwind CSS v4
+- **폰트**: Geist Sans, Geist Mono (Google Fonts)
+- **개발 도구**: ESLint, Turbopack
+
+## 개발 가이드라인
+1. **컴포넌트 구조**: App Router 패턴을 따르며, 모든 페이지는 `src/app` 디렉토리 내에 위치
+2. **스타일링**: Tailwind CSS 클래스를 우선 사용, 커스텀 CSS는 최소화
+3. **타입 안전성**: TypeScript를 적극 활용하여 타입 안전성 보장
+4. **성능**: Next.js의 Image 컴포넌트와 최적화 기능 활용
+description:
+globs:
+alwaysApply: false
+---

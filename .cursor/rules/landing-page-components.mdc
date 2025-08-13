@@ -1,0 +1,118 @@
+# 러닝크루 랜딩페이지 컴포넌트 가이드
+
+## 랜딩페이지 섹션 구조
+
+### 1. Hero Section (메인 배너)
+- **목적**: 첫인상과 핵심 메시지 전달
+- **구성요소**: 
+  - 강력한 헤드라인
+  - 서브헤드라인
+  - CTA 버튼
+  - 배경 이미지/비디오
+- **위치**: [src/app/page.tsx](mdc:src/app/page.tsx) 최상단
+
+```tsx
+interface HeroSectionProps {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  ctaLink: string;
+  backgroundImage?: string;
+}
+
+export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgroundImage }: HeroSectionProps) {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
+      {/* 배경 이미지 */}
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
+          alt="러닝크루 배경"
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+      )}
+      
+      {/* 콘텐츠 */}
+      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          {title}
+        </h1>
+        <p className="text-xl md:text-2xl mb-8 opacity-90">
+          {subtitle}
+        </p>
+        <a
+          href={ctaLink}
+          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+        >
+          {ctaText}
+        </a>
+      </div>
+    </section>
+  );
+}
+```
+
+### 2. About Section (소개 섹션)
+- **목적**: 러닝크루에 대한 상세 정보 제공
+- **구성요소**:
+  - 크루 소개
+  - 핵심 가치
+  - 멤버 수/활동 지역
+  - 활동 사진
+
+### 3. Features Section (특징 섹션)
+- **목적**: 러닝크루의 장점과 특징 강조
+- **구성요소**:
+  - 3-4개의 주요 특징
+  - 아이콘과 설명
+  - 카드 형태 레이아웃
+
+### 4. Schedule Section (일정 섹션)
+- **목적**: 러닝 일정과 모임 정보 제공
+- **구성요소**:
+  - 주간/월간 일정
+  - 모임 장소
+  - 참여 방법
+
+### 5. Testimonials Section (후기 섹션)
+- **목적**: 기존 멤버들의 경험 공유
+- **구성요소**:
+  - 멤버 후기
+  - 프로필 사진
+  - 별점/평가
+
+### 6. Contact Section (연락처 섹션)
+- **목적**: 참여 신청 및 문의
+- **구성요소**:
+  - 연락처 정보
+  - 소셜 미디어 링크
+  - 참여 신청 폼
+
+## 디자인 시스템
+
+### 색상 팔레트
+```css
+/* 러닝크루 브랜드 색상 */
+--primary-blue: #1e40af;    /* 메인 블루 */
+--primary-orange: #f97316;  /* 액센트 오렌지 */
+--secondary-purple: #7c3aed; /* 보조 퍼플 */
+--neutral-gray: #6b7280;    /* 중성 그레이 */
+--light-bg: #f8fafc;        /* 밝은 배경 */
+```
+
+### 타이포그래피
+- **헤드라인**: Geist Sans Bold (24px-72px)
+- **서브헤드라인**: Geist Sans Medium (18px-24px)
+- **본문**: Geist Sans Regular (16px-18px)
+- **캡션**: Geist Sans Light (14px)
+
+### 컴포넌트 패턴
+- **카드**: `rounded-lg shadow-lg bg-white p-6`
+- **버튼**: `bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300`
+- **섹션**: `py-16 px-4 max-w-7xl mx-auto`
+description:
+globs:
+alwaysApply: false
+---

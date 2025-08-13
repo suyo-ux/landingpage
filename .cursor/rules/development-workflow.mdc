@@ -1,0 +1,159 @@
+# 러닝크루 프로젝트 개발 워크플로우
+
+## 개발 환경 설정
+
+### 1. 프로젝트 시작
+```bash
+# 개발 서버 시작 (Turbopack 사용)
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 시작
+npm run start
+
+# 린트 검사
+npm run lint
+```
+
+### 2. 개발 서버 접속
+- **로컬 개발**: http://localhost:3000
+- **네트워크 접속**: http://[your-ip]:3000 (다른 기기에서 테스트 시)
+
+## 파일 구조 관리
+
+### 1. 컴포넌트 생성 규칙
+```
+src/
+├── app/
+│   ├── page.tsx              # 메인 페이지
+│   ├── layout.tsx            # 루트 레이아웃
+│   └── globals.css           # 전역 스타일
+├── components/               # 재사용 가능한 컴포넌트
+│   ├── ui/                   # 기본 UI 컴포넌트
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Input.tsx
+│   ├── sections/             # 페이지 섹션 컴포넌트
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── FeaturesSection.tsx
+│   │   ├── ScheduleSection.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   └── ContactSection.tsx
+│   └── layout/               # 레이아웃 관련 컴포넌트
+│       ├── Header.tsx
+│       ├── Footer.tsx
+│       └── Navigation.tsx
+├── lib/                      # 유틸리티 함수
+│   ├── utils.ts
+│   └── constants.ts
+└── types/                    # TypeScript 타입 정의
+    └── index.ts
+```
+
+### 2. 컴포넌트 생성 명령어
+```bash
+# 새 컴포넌트 디렉토리 생성
+mkdir -p src/components/sections
+
+# 새 섹션 컴포넌트 생성
+touch src/components/sections/HeroSection.tsx
+```
+
+## 개발 프로세스
+
+### 1. 기능 개발 순서
+1. **디자인 검토**: Figma/디자인 파일 확인
+2. **컴포넌트 설계**: TypeScript 인터페이스 정의
+3. **기본 구조**: JSX 구조 작성
+4. **스타일링**: Tailwind CSS 클래스 적용
+5. **반응형**: 모바일/태블릿/데스크톱 대응
+6. **인터랙션**: 호버, 클릭 효과 추가
+7. **테스트**: 다양한 브라우저/기기 테스트
+
+### 2. 코드 리뷰 체크리스트
+- [ ] TypeScript 타입 정의 완료
+- [ ] 컴포넌트 Props 인터페이스 정의
+- [ ] Tailwind CSS 클래스 최적화
+- [ ] 반응형 디자인 적용
+- [ ] 접근성 (aria-label, alt 등) 준수
+- [ ] 성능 최적화 (이미지, 폰트 등)
+- [ ] ESLint 에러 해결
+
+## 디버깅 및 테스트
+
+### 1. 개발자 도구 활용
+- **React DevTools**: 컴포넌트 상태 확인
+- **Chrome DevTools**: 
+  - Elements: CSS 스타일 디버깅
+  - Network: 이미지/폰트 로딩 확인
+  - Performance: 성능 분석
+  - Lighthouse: 성능 점수 확인
+
+### 2. 모바일 테스트
+```bash
+# 모바일 시뮬레이션
+# Chrome DevTools > Toggle device toolbar (Ctrl+Shift+M)
+# 다양한 기기 해상도로 테스트
+```
+
+### 3. 브라우저 호환성
+- **Chrome**: 최신 버전
+- **Firefox**: 최신 버전
+- **Safari**: 최신 버전
+- **Edge**: 최신 버전
+
+## 배포 준비
+
+### 1. 빌드 전 체크리스트
+- [ ] 모든 이미지 최적화 완료
+- [ ] 메타데이터 설정 완료
+- [ ] SEO 최적화 완료
+- [ ] 성능 테스트 통과
+- [ ] 모바일 반응형 테스트 완료
+- [ ] 접근성 테스트 완료
+
+### 2. 빌드 및 배포
+```bash
+# 프로덕션 빌드
+npm run build
+
+# 빌드 결과 확인
+npm run start
+
+# Vercel 배포 (권장)
+vercel --prod
+```
+
+## 유용한 명령어
+
+### 1. 개발 중 유용한 명령어
+```bash
+# 포트 변경하여 개발 서버 시작
+npm run dev -- -p 3001
+
+# 특정 호스트에서 개발 서버 시작
+npm run dev -- -H 0.0.0.0
+
+# TypeScript 타입 체크
+npx tsc --noEmit
+
+# Tailwind CSS 클래스 추출 확인
+npx tailwindcss --content "src/**/*.{js,ts,jsx,tsx}" --output temp.css
+```
+
+### 2. 성능 분석
+```bash
+# 번들 분석
+npm run build
+npx @next/bundle-analyzer
+
+# Lighthouse 성능 테스트
+npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html
+```
+description:
+globs:
+alwaysApply: false
+---
